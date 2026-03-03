@@ -27,14 +27,7 @@ func divide(a, b float64) (float64, error) {
 func main() {
 
 	var (
-		firstNumber, secondNumber, result float64
-		operationSelected                 int
-		operationAdd,
-		operationSub,
-		operationMult,
-		operationDiv,
-		operationExit string = "1) +", "2) -", "3) *", "4) /", "5) Exit"
-		err    error
+		result float64
 		runCli bool = true
 	)
 
@@ -43,10 +36,28 @@ func main() {
 		fmt.Println("| Calculator cli |")
 		fmt.Println("| -------------- |")
 		fmt.Print("Enter the first number: ")
-		fmt.Scan(&firstNumber)
+
+		firstNumber := 0.0
+		_, err := fmt.Scan(&firstNumber)
+		if err != nil {
+			fmt.Println("Error:", err)
+			break
+		}
 		fmt.Print("Enter the second number: ")
-		fmt.Scan(&secondNumber)
+
+		secondNumber := 0.0
+		_, err = fmt.Scan(&secondNumber)
+		if err != nil {
+			fmt.Println("Error:", err)
+			break
+		}
+
 		fmt.Print("Select the operation:")
+		operationAdd := "1) +"
+		operationSub := "2) -"
+		operationMult := "3) *"
+		operationDiv := "4) /"
+		operationExit := "5) Exit"
 		fmt.Printf("\n %s \n %s \n %s \n %s \n %s \n",
 			operationAdd,
 			operationSub,
@@ -54,7 +65,9 @@ func main() {
 			operationDiv,
 			operationExit,
 		)
+
 		fmt.Print("Operation selected: ")
+		operationSelected := 0
 		fmt.Scan(&operationSelected)
 
 		switch operationSelected {
@@ -71,7 +84,6 @@ func main() {
 				fmt.Println("Error:", err)
 			}
 		case 5:
-			result = 0
 			runCli = false
 			fmt.Println("Exit success")
 
@@ -80,7 +92,9 @@ func main() {
 			fmt.Println("operation not valid")
 		}
 
-		fmt.Println("Result: ", result)
+		if runCli {
+			fmt.Printf("Result: %.2f \n", result)
+		}
 	}
 
 }
