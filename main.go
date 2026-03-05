@@ -4,6 +4,14 @@ import (
 	"fmt"
 )
 
+const (
+	operationAdd  = "1) +"
+	operationSub  = "2) -"
+	operationMult = "3) *"
+	operationDiv  = "4) /"
+	operationExit = "5) Exit"
+)
+
 func add(a, b float64) float64 {
 	return a + b
 }
@@ -53,11 +61,6 @@ func main() {
 		}
 
 		fmt.Print("Select the operation:")
-		operationAdd := "1) +"
-		operationSub := "2) -"
-		operationMult := "3) *"
-		operationDiv := "4) /"
-		operationExit := "5) Exit"
 		fmt.Printf("\n %s \n %s \n %s \n %s \n %s \n",
 			operationAdd,
 			operationSub,
